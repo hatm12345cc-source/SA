@@ -1,0 +1,58 @@
+local QR7_UI = Instance.new("ScreenGui")
+local Background = Instance.new("ImageLabel")
+local UIStroke = Instance.new("UIStroke")
+local TitleBar = Instance.new("TextLabel")
+
+QR7_UI.Name = "QR7_Interface"
+QR7_UI.Parent = (gethui and gethui()) or game:GetService("CoreGui")
+QR7_UI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Background.Name = "Background"
+Background.Parent = QR7_UI
+Background.AnchorPoint = Vector2.new(0.5,0.5)
+Background.BackgroundColor3 = Color3.fromRGB(15,15,15)
+Background.Position = UDim2.new(0.5,0,0.5,0)
+Background.Size = UDim2.new(0,500,0,350)
+Background.Image = "rbxassetid://132784270564779"
+Background.ScaleType = Enum.ScaleType.Stretch
+Background.ImageTransparency = 0.35
+Background.Active = true
+Background.Draggable = true
+
+local BackgroundCorner = Instance.new("UICorner")
+BackgroundCorner.Parent = Background
+BackgroundCorner.CornerRadius = UDim.new(0,12)
+
+UIStroke.Parent = Background
+UIStroke.Color = Color3.fromRGB(163,0,0)
+UIStroke.Thickness = 2
+
+TitleBar.Name = "TitleBar"
+TitleBar.Parent = Background
+TitleBar.BackgroundColor3 = Color3.fromRGB(0,0,0)
+TitleBar.BackgroundTransparency = 0.3
+TitleBar.Size = UDim2.new(1,0,0,35)
+TitleBar.Font = Enum.Font.GothamBold
+TitleBar.Text = "الدراك"
+TitleBar.TextColor3 = Color3.fromRGB(255,255,255)
+TitleBar.TextScaled = true
+
+local ToggleButton = Instance.new("ImageButton")
+ToggleButton.Parent = QR7_UI
+ToggleButton.BackgroundColor3 = Color3.fromRGB(20,20,20)
+ToggleButton.Position = UDim2.new(0,15,0.5,-22)
+ToggleButton.Size = UDim2.new(0,45,0,45)
+ToggleButton.Image = "rbxassetid://132784270564779"
+
+local ToggleCorner = Instance.new("UICorner")
+ToggleCorner.Parent = ToggleButton
+ToggleCorner.CornerRadius = UDim.new(1,0)
+
+local ToggleStroke = Instance.new("UIStroke")
+ToggleStroke.Parent = ToggleButton
+ToggleStroke.Color = Color3.fromRGB(163,0,0)
+ToggleStroke.Thickness = 2
+
+ToggleButton.MouseButton1Click:Connect(function()
+	Background.Visible = not Background.Visible
+end)
