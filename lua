@@ -1546,5 +1546,3 @@ Credits_Label.TextWrapped = true
 Credits_Label.TextXAlignment = Enum.TextXAlignment.Left
 Credits_Label.TextYAlignment = Enum.TextYAlignment.Top
 local function UpdateTarget(player)
-	pcall(function()
-		
