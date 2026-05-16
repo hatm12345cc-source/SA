@@ -1,3 +1,7 @@
+--RELOAD GUI
+if game.CoreGui:FindFirstChild("MR_HUB") then
+	game:GetService("StarterGui"):SetCore("SendNotification", {Title = "MR HUB",Text = "السكربت شغال مسبقاً، أعد الدخول لتشغيله مرة أخرى",Duration = 5;})
+	return
 local QR7_UI = Instance.new("ScreenGui")
 local Background = Instance.new("ImageLabel")
 local UIStroke = Instance.new("UIStroke")
