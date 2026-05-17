@@ -192,3 +192,54 @@ DoggyTarget_Button.T
 local B4, S4 = CreateToggleBtn("يمص", 160, MainContent)
 وابي في ت
 ابي هو اسمه قتل كنبه وهو مايضهر الا بس في ماب البيوت وذا هو الكود
+FlingTab:AddToggle({
+        Name="قتل اللاعب بالكنبة", Default=false,
+        Callback=function(state)
+            if state then
+                if not selectedFlingPlayer then Notify("خطأ","اختر لاعب اولاً!",3); return end
+                local function isItemInInventory(n) for _,i in pairs(LocalPlayer.Backpack:GetChildren()) do if i.Name==n then return true end end end
+                local function equipItem(n) local i=LocalPlayer.Backpack:FindFirstChild(n); if i then LocalPlayer.Character.Humanoid:EquipTool(i) end end
+                local function unequipItem(n) local i=LocalPlayer.Character:FindFirstChild(n); if i then i.Parent=LocalPlayer.Backpack end end
+                if not isItemInInventory("Couch") then
+                    local args={[1]="PickingTools",[2]="Couch"}
+                    game:GetService("ReplicatedStorage").RE:FindFirstChild("1Too1l"):InvokeServer(unpack(args))
+                end
+                equipItem("Couch")
+                getgenv().flingloop=true
+                task.spawn(function()
+                    while getgenv().flingloop do
+                        pcall(function()
+                            local target=selectedFlingPlayer; if not target or not target.Character then return end
+                            local char=LocalPlayer.Character; local humanoid=char and char:FindFirstChildOfClass("Humanoid"); local rootPart=humanoid and humanoid.RootPart
+                            local tChar=target.Character; local tHumanoid=tChar:FindFirstChildOfClass("Humanoid"); local tRoot=tHumanoid and tHumanoid.RootPart
+                            if not rootPart or not tRoot then return end
+                            if rootPart.Velocity.Magnitude<50 then getgenv().OldPos=rootPart.CFrame end
+                            if tHumanoid and tHumanoid.Sit then unequipItem("Couch"); getgenv().flingloop=false; return end
+                            workspace.FallenPartsDestroyHeight=0/0
+                            local BV=Instance.new("BodyVelocity"); BV.Name="SpeedDoPai"; BV.Parent=rootPart
+                            BV.Velocity=Vector3.new(9e8,9e8,9e8); BV.MaxForce=Vector3.new(1/0,1/0,1/0)
+                            humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
+                            local angle=0; local timeLimit=tick()+2
+                            repeat
+                                angle=angle+100
+                                rootPart.CFrame=tRoot.CFrame*CFrame.new(0,1.5,0)*CFrame.Angles(math.rad(angle),0,0)
+                                char:SetPrimaryPartCFrame(tRoot.CFrame*CFrame.new(0,1.5,0)*CFrame.Angles(math.rad(angle),0,0))
+                                rootPart.Velocity=Vector3.new(9e7,9e7*10,9e7); task.wait()
+                            until tRoot.Velocity.Magnitude>500 or tick()>timeLimit or not getgenv().flingloop
+                            BV:Destroy(); humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
+                            workspace.CurrentCamera.CameraSubject=humanoid
+                            repeat
+                                rootPart.CFrame=getgenv().OldPos*CFrame.new(0,0.5,0)
+                                char:SetPrimaryPartCFrame(getgenv().OldPos*CFrame.new(0,0.5,0))
+                                humanoid:ChangeState("GettingUp"); task.wait()
+                            until (rootPart.Position-getgenv().OldPos.p).Magnitude<25
+                        end); task.wait()
+                    end
+                end)
+                Notify("الفلنق","بدأ الفلنق على: "..selectedFlingPlayer.Name,3)
+            else
+                getgenv().flingloop=false; Notify("الفلنق","تم ايقاف الفلنق!",3)
+            end
+        end
+    })
+وابي في الاستهداف ابي فيه قتل بسفينه ويطلغ بس الزر يطلع بس في ماب البيوت وذا هو الكود وتنبيه قتل بكنبه ماوس وقتل بشفينه ماوس وذا هو كود قتل بسفينه
