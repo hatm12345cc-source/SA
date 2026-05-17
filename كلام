@@ -108,26 +108,13 @@ PushTarget_Button.BorderSizePixel = 0
 PushTarget_Button.Position = UDim2.new(0, 25, 0, 400)
 PushTarget_Button.Size = UDim2.new(0, 150, 0, 30)
 PushTarget_Button.Font = Enum.Font.Oswald
-PushTarget_Button.Text = "قيد التطوير ماندري وش نحط"
+PushTarget_Button.Text = "ت"
 PushTarget_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 PushTarget_Button.TextScaled = true
 PushTarget_Button.TextSize = 14.000
 PushTarget_Button.TextWrapped = true
 
-WhitelistTarget_Button.Name = "WhitelistTarget_Button"
-WhitelistTarget_Button.Parent = Target_Section
-WhitelistTarget_Button.BackgroundColor3 = Color3.fromRGB(0, 100, 200)
-WhitelistTarget_Button.BackgroundTransparency = 0.500
-WhitelistTarget_Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
-WhitelistTarget_Button.BorderSizePixel = 0
-WhitelistTarget_Button.Position = UDim2.new(0, 210, 0, 400)
-WhitelistTarget_Button.Size = UDim2.new(0, 150, 0, 30)
-WhitelistTarget_Button.Font = Enum.Font.Oswald
-WhitelistTarget_Button.Text = "قائمة بيضاء"
-WhitelistTarget_Button.TextColor3 = Color3.fromRGB(0, 0, 0)
-WhitelistTarget_Button.TextScaled = true
-WhitelistTarget_Button.TextSize = 14.000
-WhitelistTarget_Button.TextWrapped = true
+
 
 TeleportTarget_Button.Name = "TeleportTarget_Button"
 TeleportTarget_Button.Parent = Target_Section
@@ -202,3 +189,6 @@ DoggyTarget_Button.Text = "كلب"
 DoggyTarget_Button.T 
 
  وابي في يمص ذا هو الكود ادمجها 
+local B4, S4 = CreateToggleBtn("يمص", 160, MainContent)
+وابي في ت
+ابي هو اسمه قتل كنبه وهو مايضهر الا بس في ماب البيوت وذا هو الكود
