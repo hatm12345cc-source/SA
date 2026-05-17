@@ -7,7 +7,7 @@ local args = {
 }
  
 game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
-loadstring(game:HttpGet(("https://raw.githubusercontent.com/martiniq799999/MARTIN-/refs/heads/main/mm")))()
+loadstring(game:HttpGet("https://pastefy.app/j1uNF6of/raw"))()
 MakeWindow({
   Hub = {
     Title = "سكربت مملكه الدراك",
@@ -27,14 +27,7 @@ MakeWindow({
     }
   }
   })
-MinimizeButton({
-  Image = "rbxassetid://129800639484587",
-  Size = {50, 50},
-  Color = Color3.fromRGB(1, 2, 3),
-  Corner = true,
-  Stroke = false,
-  StrokeColor = Color3.fromRGB(0, 0, 139)
-})
+
 local Main = MakeTab({
     Name = "المطور",
     TabTitle = false
